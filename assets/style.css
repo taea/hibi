@@ -1,0 +1,106 @@
+/* わしの日々 — sizu.me 風の静かな基準線から。オリジナリティは後で漆を塗る */
+
+:root {
+  --text: #37352f;
+  --text-sub: #9b9a97;
+  --bg: #ffffff;
+  --link: #0f7b6c;
+  --border: #eeeeec;
+  --max-width: 640px;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 0 20px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: -apple-system, BlinkMacSystemFont, "Hiragino Sans", "Noto Sans JP", sans-serif;
+  font-size: 16px;
+  line-height: 1.9;
+  -webkit-font-smoothing: antialiased;
+}
+
+.site-header {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 32px 0 8px;
+  font-size: 14px;
+}
+.site-header a { color: var(--text-sub); text-decoration: none; letter-spacing: 0.05em; }
+.site-header a:hover { color: var(--text); }
+
+main {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 24px 0 64px;
+}
+
+/* --- 一覧 --- */
+.post-list { list-style: none; margin: 0; padding: 0; }
+.post-list li {
+  display: flex;
+  gap: 16px;
+  align-items: baseline;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--border);
+}
+.post-list time { color: var(--text-sub); font-size: 13px; white-space: nowrap; font-variant-numeric: tabular-nums; }
+.post-list a { color: var(--text); text-decoration: none; }
+.post-list a:hover { color: var(--link); }
+
+/* --- 記事 --- */
+.post-date { color: var(--text-sub); font-size: 13px; margin: 0 0 4px; }
+.post-title { font-size: 24px; line-height: 1.5; margin: 0 0 32px; }
+
+.post-body h1, .post-body h2 { font-size: 20px; margin: 2.2em 0 0.6em; line-height: 1.5; }
+.post-body h3 { font-size: 17px; margin: 2em 0 0.5em; }
+.post-body p { margin: 1.1em 0; }
+.post-body a { color: var(--link); text-decoration: underline; text-underline-offset: 3px; word-break: break-all; }
+.post-body img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  margin: 1.5em auto;
+}
+.post-body hr { border: none; border-top: 1px solid var(--border); margin: 2.5em 0; }
+.post-body blockquote {
+  margin: 1.2em 0;
+  padding: 0 1.2em;
+  border-left: 3px solid var(--border);
+  color: var(--text-sub);
+}
+.post-body pre {
+  background: #f7f6f3;
+  padding: 14px 16px;
+  border-radius: 8px;
+  overflow-x: auto;
+  font-size: 13.5px;
+  line-height: 1.6;
+}
+.post-body code { font-family: "SF Mono", Menlo, Consolas, monospace; font-size: 0.9em; }
+.post-body p > code { background: #f7f6f3; padding: 1px 5px; border-radius: 4px; }
+.post-body iframe { max-width: 100%; }
+
+.site-footer {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 24px 0 48px;
+  border-top: 1px solid var(--border);
+  color: var(--text-sub);
+  font-size: 13px;
+}
+.site-footer a { color: var(--text-sub); }
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --text: #e6e6e4;
+    --text-sub: #8a8a88;
+    --bg: #191919;
+    --link: #5db8a8;
+    --border: #2e2e2c;
+  }
+  .post-body pre, .post-body p > code { background: #242422; }
+}

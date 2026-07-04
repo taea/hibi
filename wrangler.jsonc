@@ -1,0 +1,11 @@
+{
+  // わしの日々 — Cloudflare Workers (static assets) 設定
+  "name": "hibi",
+  "compatibility_date": "2026-07-04",
+  "assets": {
+    "directory": "./dist",
+    // 拡張子なし URL (/posts/xxx/) で index.html を返す
+    "html_handling": "auto-trailing-slash",
+    "not_found_handling": "404-page"
+  }
+}
