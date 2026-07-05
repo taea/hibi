@@ -1,9 +1,13 @@
 {
-  // わしの日々 — Cloudflare Workers (static assets) 設定
+  // わしの日々 — Cloudflare Workers 設定
+  // worker.js が玄関番（POST /letter の飛脚）、静的配信は dist/ の assets
   "name": "hibi",
+  "main": "worker.js",
   "compatibility_date": "2026-07-04",
   "assets": {
     "directory": "./dist",
+    // worker から env.ASSETS.fetch で静的配信に委譲するための束ね名
+    "binding": "ASSETS",
     // 拡張子なし URL (/posts/xxx/) で index.html を返す
     "html_handling": "auto-trailing-slash",
     "not_found_handling": "404-page"

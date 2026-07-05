@@ -84,6 +84,44 @@ main {
 .post-body p > code { background: #f7f6f3; padding: 1px 5px; border-radius: 4px; }
 .post-body iframe { max-width: 100%; }
 
+/* --- 文箱📮 --- */
+.letter {
+  margin-top: 56px;
+  padding-top: 24px;
+  border-top: 1px solid var(--border);
+}
+.letter-title { font-size: 15px; margin: 0 0 4px; }
+.letter-note { color: var(--text-sub); font-size: 12.5px; margin: 0 0 12px; }
+.letter-form textarea {
+  width: 100%;
+  min-height: 88px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 14px;
+  line-height: 1.7;
+  resize: vertical;
+}
+.letter-form textarea:focus { outline: none; border-color: var(--link); }
+.letter-form button {
+  margin-top: 8px;
+  padding: 7px 20px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  background: var(--bg);
+  color: var(--text);
+  font-family: inherit;
+  font-size: 13.5px;
+  cursor: pointer;
+}
+.letter-form button:hover { border-color: var(--link); color: var(--link); }
+.letter-form button:disabled { color: var(--text-sub); cursor: default; }
+.letter-hp { position: absolute; left: -9999px; width: 1px; height: 1px; opacity: 0; }
+.letter-thanks { color: var(--text-sub); font-size: 14px; }
+
 .site-footer {
   max-width: var(--max-width);
   margin: 0 auto;

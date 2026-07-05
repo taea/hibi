@@ -113,8 +113,45 @@ def render_post(post)
       <h1 class="post-title">#{CGI.escapeHTML(post.title)}</h1>
       <div class="post-body">#{post.html}</div>
     </article>
+    #{letter_box(post)}
   HTML
   layout(title: "#{post.title} | #{SITE_TITLE}", body:, path: post.path)
+end
+
+# 文箱📮 — sizu.me のお手紙 / はくたけ式。名前欄なし・非公開・返信なし
+def letter_box(post)
+  <<~HTML
+    <section class="letter">
+      <h2 class="letter-title">お手紙</h2>
+      <p class="letter-note">名前は付きません。公開もされません。書いた人にだけ届きます。</p>
+      <form class="letter-form" method="post" action="/letter">
+        <input type="text" name="website" class="letter-hp" tabindex="-1" autocomplete="off" aria-hidden="true">
+        <input type="hidden" name="page" value="#{post.path}">
+        <textarea name="body" maxlength="2000" required placeholder="この日の日記へ、ひとこと"></textarea>
+        <button type="submit">送る</button>
+      </form>
+      <p class="letter-thanks" hidden>お手紙ありがとうございます 📮</p>
+    </section>
+    <script>
+    document.querySelector(".letter-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const form = e.target;
+      const button = form.querySelector("button");
+      button.disabled = true;
+      button.textContent = "送っています…";
+      try {
+        const res = await fetch("/letter", { method: "POST", body: new FormData(form) });
+        if (!res.ok) throw new Error("failed");
+        form.hidden = true;
+        document.querySelector(".letter-thanks").hidden = false;
+      } catch {
+        button.disabled = false;
+        button.textContent = "うまく送れず… もう一度どうぞ";
+        setTimeout(() => { button.textContent = "送る"; }, 4000);
+      }
+    });
+    </script>
+  HTML
 end
 
 def render_index(posts)
