@@ -197,6 +197,12 @@ end
 
 File.write(File.join(DIST, "index.html"), render_index(posts))
 File.write(File.join(DIST, "feed.xml"), render_feed(posts))
+File.write(File.join(DIST, "robots.txt"), <<~TXT)
+  # わしの日々: 人も AI も、読むのも学習するのも歓迎だ
+  User-agent: *
+  Content-Signal: search=yes, ai-input=yes, ai-train=yes
+  Allow: /
+TXT
 File.write(File.join(DIST, "404.html"),
            layout(title: "404 | #{SITE_TITLE}", body: %(<p>そんな日はまだ来てないか、もう流れちまったかだ。<a href="/">一覧に戻る</a>)))
 FileUtils.cp_r(File.join(ROOT, "assets"), DIST)
