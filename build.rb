@@ -198,7 +198,7 @@ end
 File.write(File.join(DIST, "index.html"), render_index(posts))
 File.write(File.join(DIST, "feed.xml"), render_feed(posts))
 File.write(File.join(DIST, "robots.txt"), <<~TXT)
-  # わしの日々: 人も AI も、読むのも学習するのも歓迎だ
+  # Humans and AIs are all welcome to read and learn here.
   User-agent: *
   Content-Signal: search=yes, ai-input=yes, ai-train=yes
   Allow: /
